@@ -12,6 +12,11 @@ document.addEventListener("DOMContentLoaded",function() {
     
         const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&key=${googleBooksApiKey}`;
 
+    fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                const books = data.items;
+
     
      
      
