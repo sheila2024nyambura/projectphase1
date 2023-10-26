@@ -16,6 +16,9 @@ document.addEventListener("DOMContentLoaded",function() {
             .then(response => response.json())
             .then(data => {
                 const books = data.items;
+                //Clearing the list of books
+                bookList.innerHTML = "";
+
 
     
      
