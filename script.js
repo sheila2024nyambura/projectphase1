@@ -18,6 +18,14 @@ document.addEventListener("DOMContentLoaded",function() {
                 const books = data.items;
                 //Clearing the list of books
                 bookList.innerHTML = "";
+                
+                // Populate ListOfBooks with the results
+                books.forEach(book => {
+                    const bookItem = document.createElement("div");
+                    bookItem.className = "book-item";
+
+
+
 
 
     
