@@ -45,6 +45,17 @@ document.addEventListener("DOMContentLoaded",function() {
     // Event listener for the search button
     searchButton.addEventListener("click", searchBooks);
 
+    // Event listener for marking a book as completed
+    ListOfBooks.addEventListener("change", function(event) {
+        if (event.target.type === "checkbox") {
+            const bookItem = event.target.closest(".book-item");
+            const title = bookItem.querySelector("h3").textContent;
+            const author = bookItem.querySelector("p").textContent;
+            markAsRead(title, author);
+        }
+    });
+
+
     
 
 
