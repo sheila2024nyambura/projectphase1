@@ -60,6 +60,26 @@ document.addEventListener("DOMContentLoaded",function() {
         const bookData = { title, author };
         displayReadBook(bookData);
 
+         // Save the book to local storage
+         const completdBooksData = JSON.parse(localStorage.getItem("completedBooks")) || [];
+         completdBooksData.push(bookData);
+         localStorage.setItem("completedBooks", JSON.stringify(completedBooksData));
+     }
+// Function to display a book in the "Completed Books" section
+function displayCompletedBook(bookData) {
+    const completedItem = document.createElement("div");
+    completedItem.className = "book-item";
+
+    const completedHTML = `
+        <h3>${bookData.title}</h3>
+        <p>Author: ${bookData.author}</p>
+    `;
+
+    completedItem.innerHTML = completedHTML;
+    completedBooks.appendChild(completedItem);
+}
+
+
 
     
 
