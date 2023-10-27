@@ -55,6 +55,11 @@ document.addEventListener("DOMContentLoaded",function() {
         }
     });
 
+    // Function to add a book to the completed list and save it to local storage
+    function markAsRead(title, author) {
+        const bookData = { title, author };
+        displayReadBook(bookData);
+
 
     
 
