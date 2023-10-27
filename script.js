@@ -1,24 +1,24 @@
-document.addEventListener("DOMContentLoaded",function() {
+document.addEventListener("DOMContentLoaded", function() {
     const searchButton = document.getElementById("search-button");
     const searchInput = document.getElementById("search-input");
     const ListOfBooks = document.getElementById("list-of-books");
     const CompletedBooks = document.getElementById("completed-books");
 
-    const googleBooksApiKey = 'AIzaSyDy4vugqUq0ePBPWbC2SViNJS_JlTdoN14';
+    const googleBooksApiKey = 'AIzaSyDy4vugqUq0ePBPWbC2SViNJS_JlTdoN14'; 
 
-    // Function that fetches data from Google Books Api
+    // Function that fetches data from Google Books API
     function searchBooks() {
         const searchTerm = searchInput.value;
-    
+
         const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&key=${googleBooksApiKey}`;
 
-    fetch(apiUrl)
+        fetch(apiUrl)
             .then(response => response.json())
             .then(data => {
                 const books = data.items;
-                //Clearing the list of books
-                bookList.innerHTML = "";
-                
+                // Clearing the list of books
+                ListOfBooks.innerHTML = "";
+
                 // Populate ListOfBooks with the results
                 books.forEach(book => {
                     const bookItem = document.createElement("div");
@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded",function() {
                 console.error(error);
             });
     }
+
     // Event listener for the search button
     searchButton.addEventListener("click", searchBooks);
 
@@ -58,32 +59,33 @@ document.addEventListener("DOMContentLoaded",function() {
     // Function to add a book to the completed list and save it to local storage
     function markAsRead(title, author) {
         const bookData = { title, author };
-        displayReadBook(bookData);
+        displayCompletedBook(bookData);
 
-         // Save the book to local storage
-         const completdBooksData = JSON.parse(localStorage.getItem("completedBooks")) || [];
-         completdBooksData.push(bookData);
-         localStorage.setItem("completedBooks", JSON.stringify(completedBooksData));
-     }
-// Function to display a book in the "Completed Books" section
-function displayCompletedBook(bookData) {
-    const completedItem = document.createElement("div");
-    completedItem.className = "book-item";
+        // Save the book to local storage
+        const completedBooksData = JSON.parse(localStorage.getItem("completedBooks")) || [];
+        completedBooksData.push(bookData);
+        localStorage.setItem("completedBooks", JSON.stringify(completedBooksData));
+    }
 
-    const completedHTML = `
-        <h3>${bookData.title}</h3>
-        <p>Author: ${bookData.author}</p>
-    `;
+    // Function to display a book in the "Completed Books" section
+    function displayCompletedBook(bookData) {
+        const completedItem = document.createElement("div");
+        completedItem.className = "book-item";
 
-    completedItem.innerHTML = completedHTML;
-    completedBooks.appendChild(completedItem);
-}
+        const completedHTML = `
+            <h3>${bookData.title}</h3>
+            <p>Author: ${bookData.author}</p>
+        `;
 
-// Load "Completed" books when the page loads
-function loadCompletedBooks() {
-    const completedBooksData = JSON.parse(localStorage.getItem("completedBooks")) || [];
-    completedBooksData.forEach(bookData => displayCompletedBook(bookData));
-}
+        completedItem.innerHTML = completedHTML;
+        CompletedBooks.appendChild(completedItem);
+    }
 
-loadCompletedBooks(); // Load "Completed" books when the page loads
+    // Load "Completed" books when the page loads
+    function loadCompletedBooks() {
+        const completedBooksData = JSON.parse(localStorage.getItem("completedBooks")) || [];
+        completedBooksData.forEach(bookData => displayCompletedBook(bookData));
+    }
+
+    loadCompletedBooks(); // Load "Completed" books when the page loads
 });
