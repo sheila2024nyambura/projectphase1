@@ -24,6 +24,24 @@ document.addEventListener("DOMContentLoaded",function() {
                     const bookItem = document.createElement("div");
                     bookItem.className = "book-item";
 
+                    const title = book.volumeInfo.title;
+                    const author = book.volumeInfo.authors ? book.volumeInfo.authors[0] : "Unknown";
+                    const bookHTML = `
+                        <h3>${title}</h3>
+                        <p>Author: ${author}</p>
+                        <label class="checkbox-label">
+                            <input type="checkbox"> Mark as Read
+                        </label>
+                    `;
+
+                    bookItem.innerHTML = bookHTML;
+                    bookList.appendChild(bookItem);
+                });
+
+
+
+                
+
 
 
 
