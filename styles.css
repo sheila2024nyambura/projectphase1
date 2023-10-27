@@ -13,5 +13,16 @@ body {
     background-color: #fff; /* White background for the content container */
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+}h1 {
+    color: #333; /* Dark gray text color */
 }
+
+/* Style the search input and button */
+#search-input, #search-button {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+}
+
+
 
