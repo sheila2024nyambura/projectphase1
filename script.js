@@ -35,15 +35,19 @@ document.addEventListener("DOMContentLoaded",function() {
                     `;
 
                     bookItem.innerHTML = bookHTML;
-                    bookList.appendChild(bookItem);
+                    ListOfBooks.appendChild(bookItem);
                 });
             })
             .catch(error => {
                 console.error(error);
             });
     }
+    // Event listener for the search button
+    searchButton.addEventListener("click", searchBooks);
 
     
+
+
 
 
 
