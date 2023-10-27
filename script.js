@@ -37,10 +37,21 @@ document.addEventListener("DOMContentLoaded",function() {
                     bookItem.innerHTML = bookHTML;
                     bookList.appendChild(bookItem);
                 });
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }
+
+    
 
 
 
-                
+
+
+
+
+
 
 
 
