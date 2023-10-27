@@ -79,27 +79,11 @@ function displayCompletedBook(bookData) {
     completedBooks.appendChild(completedItem);
 }
 
+// Load "Completed" books when the page loads
+function loadCompletedBooks() {
+    const completedBooksData = JSON.parse(localStorage.getItem("completedBooks")) || [];
+    completedBooksData.forEach(bookData => displayCompletedBook(bookData));
+}
 
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-     
-     
-
-
-})
+loadCompletedBooks(); // Load "Completed" books when the page loads
+});
